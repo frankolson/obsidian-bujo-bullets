@@ -1,10 +1,10 @@
 {
 	"id": "bujo-bullets",
 	"name": "BuJo Bullets",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"minAppVersion": "0.15.0",
 	"description": "Alternate checkbox types for Obsidian to support Bullet Journal bullets",
-	"author": "Obsidian",
+	"author": "Will Olson",
 	"authorUrl": "https://willolson.io",
 	"fundingUrl": "https://github.com/sponsors/frankolson",
 	"isDesktopOnly": false
