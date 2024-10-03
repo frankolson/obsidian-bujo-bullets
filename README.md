@@ -2,6 +2,11 @@
 
 Alternate checkbox types for Obsidian to support [Bullet Journal bullets](https://bulletjournal.com/blogs/faq/what-is-rapid-logging-understand-rapid-logging-bullets-and-signifiers).
 
+## Features
+
+- [x] Custom rendering of Bullet Journal styled checkboxes
+- [ ] Right-click menu to update bullet type
+
 ## Installation
 
 Follow the steps below to install BuJo Bullets.
@@ -26,6 +31,10 @@ When in Obsidian's reading mode, the bullets will be displayed using the followi
 ## License
 
 This plugin is released under the MIT license. See the [LICENSE](/LICENSE) file for more information.
+
+## Known Issues
+
+- [ ] Copying custom checkboxes from reading mode will not copy the custom bullet type
 
 ## Donations
 
