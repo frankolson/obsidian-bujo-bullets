@@ -23,6 +23,10 @@ BuJo Bullets adds support for the following bullet types:
 When in Obsidian's reading mode, the bullets will be displayed using the following icons:
 ![BuJo Bullets icons](/docs/images/rendered-bullets.png)
 
+## License
+
+This plugin is released under the MIT license. See the [LICENSE](/LICENSE) file for more information.
+
 ## Donations
 
 The plugin is completely free to use, and very willingly developed and supported by Clare Macrae since May 2022.
