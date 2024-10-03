@@ -1,7 +1,7 @@
 {
-	"name": "obsidian-sample-plugin",
+	"name": "bujo-bullets",
 	"version": "1.0.0",
-	"description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+	"description": "Alternate checkbox types for Obsidian to support Bullet Journal bullets",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
