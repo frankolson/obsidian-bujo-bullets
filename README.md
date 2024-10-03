@@ -32,6 +32,8 @@ When in Obsidian's reading mode, the bullets will be displayed using the followi
 
 This plugin is released under the MIT license. See the [LICENSE](/LICENSE) file for more information.
 
+Icons are sourced from the Obsidian Minimal theme: https://github.com/kepano/obsidian-minimal/blob/8cb709a373c9601a9e9172eaa75fdbeba4412c43/src/scss/app/editor.scss
+
 ## Known Issues
 
 - [ ] Copying custom checkboxes from reading mode will not copy the custom bullet type
