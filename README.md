@@ -5,7 +5,7 @@ Alternate checkbox types for Obsidian to support [Bullet Journal bullets](https:
 ## Features
 
 - [x] Custom rendering of Bullet Journal styled checkboxes
-- [ ] Right-click menu to update bullet type
+- [x] Right-click menu to update bullet type
 
 ## Installation
 
@@ -37,6 +37,7 @@ Icons are sourced from the Obsidian Minimal theme: https://github.com/kepano/obs
 ## Known Issues
 
 - [ ] Copying custom checkboxes from reading mode will not copy the custom bullet type
+- [ ] Undo does not work as expected when changing bullet types from the right-click menu
 
 ## Donations
 
