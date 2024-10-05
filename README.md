@@ -40,9 +40,7 @@ Icons are sourced from the Obsidian Minimal theme: https://github.com/kepano/obs
 
 ## Donations
 
-The plugin is completely free to use, and very willingly developed and supported by Clare Macrae since May 2022.
-
-If have been helped by this plugin and wish to support it, please see the following link:
+I really enjoy building stuff. Sometimes for myself, sometimes for others. If have been helped by this plugin and wish to support it, please see the following link:
 
 https://github.com/sponsors/frankolson
 
