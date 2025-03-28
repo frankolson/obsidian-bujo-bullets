@@ -31,9 +31,10 @@ export default class BuJoPlugin extends Plugin {
     this.commandHandler = new CommandHandler(this);
 
     this.registerMarkdownPostProcessor((element, _context) => {
-      const renderedNotes = element.findAll('ul > li')
-      const renderedCheckboxes = element.findAll('.task-list-item')
-      const renderedBullets = [...renderedNotes, ...renderedCheckboxes]
+      const renderedBullets = element.findAll('ul > li');
+      const renderedCheckboxes = renderedBullets.filter((bullet) =>
+        bullet.classList.contains('task-list-item')
+      );
 
       if (renderedBullets.length === 0) {
         return
