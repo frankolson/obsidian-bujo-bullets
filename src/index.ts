@@ -1,7 +1,6 @@
 import { Menu, Plugin } from 'obsidian';
 import { CommandHandler } from './handlers/command-handler';
 import { isBulletText, updateBulletType } from './core/bullet-utils';
-import * as DOMPurify from 'isomorphic-dompurify';
 import {
   BuJoPluginSettings,
   BuJoPluginSettingTab,
@@ -31,29 +30,18 @@ export default class BuJoPlugin extends Plugin {
     this.commandHandler = new CommandHandler(this);
 
     this.registerMarkdownPostProcessor((element, _context) => {
-      const renderedNotes = element.findAll('ul > li')
-      const renderedCheckboxes = element.findAll('.task-list-item')
-      const renderedBullets = [...renderedNotes, ...renderedCheckboxes]
+      const renderedBullets = element.findAll('ul > li')
+      const renderedCheckboxes = renderedBullets.filter((el) => el.classList.contains('task-list-item'))
 
       if (renderedBullets.length === 0) {
         return
       }
 
       // Process signifiers
-      for (let bullet of renderedBullets) {
-        const bulletText = bullet.innerText
-        const signifiers = this.settings.signifiers;
-        
-        for (let signifier of signifiers) {
-          const signifierText = signifier.value;
-
-          if (bulletText.startsWith(signifierText + ' ')) {
-            let html = bullet.innerHTML;
-            let sanitizedText = DOMPurify.sanitize(signifierText);
-            
-            html = html.replace(signifierText, `<span class="bujo-bullet-signifier">${sanitizedText}</span>`);
-            bullet.innerHTML = html
-          }
+      for (const bullet of renderedBullets) {
+        for (const signifier of this.settings.signifiers) {
+          if (!signifier.value) continue
+          if (wrapLeadingSignifier(bullet, signifier.value)) break
         }
       }
 
@@ -146,4 +134,33 @@ export default class BuJoPlugin extends Plugin {
   async saveSettings() {
     await this.saveData(this.settings);
   }
+}
+
+function wrapLeadingSignifier(container: HTMLElement, value: string): boolean {
+  const doc = container.ownerDocument!
+  const walker = doc.createTreeWalker(container, NodeFilter.SHOW_TEXT)
+  let node = walker.nextNode() as Text | null
+  while (node) {
+    if (node.nodeValue && node.nodeValue.trim().length > 0) break
+    node = walker.nextNode() as Text | null
+  }
+  if (!node || !node.nodeValue) return false
+
+  const leading = node.nodeValue.replace(/^\s+/, '')
+  const trimLength = node.nodeValue.length - leading.length
+  if (!leading.startsWith(value + ' ')) return false
+
+  const prefix = node.nodeValue.slice(0, trimLength)
+  const rest = leading.slice(value.length)
+
+  const span = doc.createElement('span')
+  span.className = 'bujo-bullet-signifier'
+  span.textContent = value
+
+  const parent = node.parentNode!
+  parent.insertBefore(doc.createTextNode(prefix), node)
+  parent.insertBefore(span, node)
+  parent.insertBefore(doc.createTextNode(rest), node)
+  parent.removeChild(node)
+  return true
 }
